@@ -1,22 +1,22 @@
 # AI Code Reviewer
 
-A powerful AI-powered code reviewer that runs locally using Ollama and DeepSeek Coder. 100% free - you only pay for electricity! ⚡
+A powerful AI-powered code reviewer that runs locally using Ollama and DeepSeek Coder. 100% free - you only pay for electricity! 
 
 ![AI Code Reviewer](https://img.shields.io/badge/AI-Code%20Reviewer-green) ![Ollama](https://img.shields.io/badge/Powered%20by-Ollama-blue) ![React](https://img.shields.io/badge/Built%20with-React-blue)
 
-## ✨ Features
+## Features
 
-- 🔒 **Privacy-First**: All code stays on your machine
-- 🚀 **Fast**: DeepSeek Coder 6.7B optimized for code analysis
-- 📝 **Professional Prompts**: Structured JSON responses
-- 🎨 **Beautiful UI**: Clean SaaS-style interface
-- 🌙 **Dark Mode**: Easy on the eyes
-- 📜 **History**: Save reviews in localStorage
-- 📊 **Code Score**: 0-100 quality score
-- 🔍 **Strict Mode**: Production-grade critical review
-- 📥 **Export**: Download reviews as Markdown
+- **Privacy-First**: All code stays on your machine
+- **Fast**: DeepSeek Coder 6.7B optimized for code analysis
+- **Professional Prompts**: Structured JSON responses
+- **Beautiful UI**: Clean SaaS-style interface
+- **Dark Mode**: Easy on the eyes
+- **History**: Save reviews in localStorage
+- **Code Score**: 0-100 quality score
+   **Strict Mode**: Production-grade critical review
+- **Export**: Download reviews as Markdown
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐
@@ -25,13 +25,13 @@ A powerful AI-powered code reviewer that runs locally using Ollama and DeepSeek 
 └─────────────────┘      └─────────────────┘      └─────────────────┘
 ```
 
-## 📋 Requirements
+## Requirements
 
 - Node.js 18+
 - Ollama installed and running
 - 8GB+ RAM (16GB recommended for best performance)
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Install Ollama
 
@@ -102,7 +102,7 @@ cd client && npm run dev
 - Backend API: http://localhost:3001
 - Health Check: http://localhost:3001/api/health
 
-## 🐳 Docker Installation
+## Docker Installation
 
 ### Option 1: Docker Compose (Recommended)
 
@@ -125,7 +125,7 @@ cd server && docker build -t ai-code-reviewer-server .
 cd client && docker build -t ai-code-reviewer-client .
 ```
 
-## 📖 Usage
+## Usage
 
 1. **Paste your code** in the Monaco Editor
 2. **Select language** from dropdown
@@ -134,7 +134,7 @@ cd client && docker build -t ai-code-reviewer-client .
 5. **View results**: Summary, issues with severity badges, refactored code
 6. **Export** as Markdown if needed
 
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -162,7 +162,7 @@ CORS_ORIGIN=http://localhost:5173
 - Swift
 - Kotlin
 
-## 🎯 API Endpoints
+## API Endpoints
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
@@ -182,7 +182,7 @@ curl -X POST http://localhost:3001/api/review \
   }'
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ai-code-reviewer/
@@ -205,14 +205,14 @@ ai-code-reviewer/
 └── README.md
 ```
 
-## 💡 Tips for Best Results
+## Tips for Best Results
 
 1. **Keep code reasonable**: Up to 500 lines works best
 2. **Use descriptive variable names**: The AI analyzes naming
 3. **Enable Strict Mode** for production code reviews
 4. **Check history**: Previous reviews are saved locally
 
-## 🔨 Troubleshooting
+## Troubleshooting
 
 ### Ollama not running
 ```bash
@@ -240,15 +240,15 @@ ollama pull deepseek-coder
 ollama pull deepseek-coder:3b
 ```
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📄 License
+## License
 
 MIT License - feel free to use for personal and commercial projects.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [Ollama](https://ollama.com) - For making local AI accessible
 - [DeepSeek](https://deepseek.com) - For the excellent code model
