@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  # Ollama service for AI model
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ai-code-reviewer-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+    networks:
+      - ai-code-reviewer-network
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          # Require at least 8GB RAM for DeepSeek Coder
+          memory: 16G
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  # Backend server
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: ai-code-reviewer-server
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - OLLAMA_MODEL=deepseek-coder:latest
+      - OLLAMA_TIMEOUT=120000
+      - CORS_ORIGIN=http://localhost:5173
+    depends_on:
+      - ollama
+    networks:
+      - ai-code-reviewer-network
+    restart: unless-stopped
+
+  # Frontend client
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: ai-code-reviewer-client
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:3001
+    depends_on:
+      - server
+    networks:
+      - ai-code-reviewer-network
+    restart: unless-stopped
+
+networks:
+  ai-code-reviewer-network:
+    driver: bridge
+
+volumes:
+  ollama_data:
+    driver: local
