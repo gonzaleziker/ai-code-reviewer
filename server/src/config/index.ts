@@ -6,7 +6,7 @@ export const config = {
   },
   server: {
     port: parseInt(process.env.PORT || '3001', 10),
-    corsOrigin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+    corsOrigin: process.env.CORS_ORIGIN || '*', // Allow all origins for Vercel
   },
   review: {
     maxCodeLength: 50000,
