@@ -155,13 +155,12 @@ ${review.refactored_code}
             <span>No issues found! Your code looks great.</span>
           </div>
         ) : (
-          review.issues.map((issue, index) => (
+          review.issues.map((issue, idx) => (
             <IssueCard
-              key={index}
+              key={idx}
               issue={issue}
-              index={index}
-              isExpanded={expandedIssues.has(index)}
-              onToggle={() => toggleIssue(index)}
+              isExpanded={expandedIssues.has(idx)}
+              onToggle={() => toggleIssue(idx)}
             />
           ))
         )}
@@ -194,12 +193,11 @@ ${review.refactored_code}
 
 interface IssueCardProps {
   issue: Issue;
-  index: number;
   isExpanded: boolean;
   onToggle: () => void;
 }
 
-function IssueCard({ issue, index, isExpanded, onToggle }: IssueCardProps) {
+function IssueCard({ issue, isExpanded, onToggle }: IssueCardProps) {
   const severityColors = {
     critical: 'border-red-500 bg-red-50 dark:bg-red-900/20',
     high: 'border-orange-500 bg-orange-50 dark:bg-orange-900/20',
