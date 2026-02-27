@@ -6,6 +6,9 @@ import { reviewCode, healthCheck, reviewCodeStream } from './controllers/review.
 
 const app = express();
 
+// Trust proxy for ngrok/cloudflare
+app.set('trust proxy', 1);
+
 // Middleware
 app.use(cors({
   origin: config.server.corsOrigin,
