@@ -20,8 +20,8 @@ A powerful AI-powered code reviewer that runs locally using Ollama and DeepSeek 
 
 ```
 ┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐
-│   User Code    │ ──▶  │  Express API   │ ──▶  │     Ollama      │
-│   (Frontend)   │      │   (Backend)    │      │  DeepSeek Coder │
+│   User Code     │  ──▶│  Express API     │ ──▶ │     Ollama      │
+│   (Frontend)    │      │   (Backend)     │      │  DeepSeek Coder │
 └─────────────────┘      └─────────────────┘      └─────────────────┘
 ```
 
