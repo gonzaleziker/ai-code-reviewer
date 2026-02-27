@@ -19,10 +19,10 @@ A powerful AI-powered code reviewer that runs locally using Ollama and DeepSeek 
 ## Architecture
 
 ```
-┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐
-│   User Code     │  ──▶│  Express API     │ ──▶ │     Ollama      │
-│   (Frontend)    │      │   (Backend)     │      │  DeepSeek Coder │
-└─────────────────┘      └─────────────────┘      └─────────────────┘
++-----------------+      +-----------------+      +-----------------+
+|   User Code     |  --> |  Express API    | --> |     Ollama      |
+|   (Frontend)    |      |   (Backend)     |      |  DeepSeek Coder |
++-----------------+      +-----------------+      +-----------------+
 ```
 
 ## Requirements
@@ -239,6 +239,51 @@ ollama pull deepseek-coder
 # Use a smaller model
 ollama pull deepseek-coder:3b
 ```
+
+## Deploy to Vercel (Remote Access)
+
+You can deploy the frontend to Vercel while running the backend locally:
+
+### 1. Set up ngrok
+
+```bash
+# Install ngrok and add your token
+ngrok config add-authtoken YOUR_NGROK_TOKEN
+
+# Start ngrok tunnel to your local server
+ngrok http 3001
+```
+
+### 2. Configure Vercel
+
+1. Deploy the frontend to Vercel
+2. In Vercel Dashboard, go to Settings > Environment Variables
+3. Add:
+   - Name: `VITE_API_URL`
+   - Value: `https://YOUR_NGROK_URL.ngrok-free.app/api`
+4. Redeploy
+
+### Note
+Your ngrok URL changes on restart (free tier). For a persistent URL, upgrade ngrok or use Cloudflare Tunnel.
+
+## Use Online LLM (No Local AI)
+
+Instead of running Ollama locally, you can use online LLM services:
+
+### Option 1: OpenRouter (Free Tier)
+
+1. Sign up at [openrouter.ai](https://openrouter.ai)
+2. Get your API key
+3. Modify `server/src/services/ollama.service.ts` to call OpenRouter API instead
+
+### Option 2: Ollama Cloud
+
+Ollama offers cloud hosting. Check [ollama.com/cloud](https://ollama.com/cloud)
+
+### Option 3: Other LLM Providers
+
+- [Groq](https://groq.com) - Free tier available
+- [Hugging Face Inference](https://huggingface.co/inference) - Free tier
 
 ## Contributing
 
